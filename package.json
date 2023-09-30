@@ -1,9 +1,9 @@
 {
-  "name": "PlaywrightTest",
+  "name": "PlaywrightTask",
   "version": "1.0.0",
-  "description": "A project to show off Playwright knowledge on LinkedIn",
+  "description": "QA Automation Engineer Challenge - Cloud Cypress login page written in Playwright",
   "main": "index.js",
-  "repository": "https://github.com/Michael-Robson/PlaywrightTest",
+  "repository": "https://github.com/Michael-Robson/PlaywrightTask",
   "author": "Michael Robson",
   "license": "MIT",
   "private": true,
@@ -13,16 +13,19 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.37.1",
+    "@typescript-eslint/eslint-plugin": "^6.7.3",
+    "@typescript-eslint/parser": "^6.7.3",
     "eslint": "^8.48.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-playwright": "^0.16.0",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
-    "prettier": "^3.0.3"
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2"
   },
   "scripts": {
     "prepare": "husky install",
-    "lint": "eslint ./ --ext .js",
+    "lint": "eslint ./ --ext .js,.ts",
     "prettier:check": "prettier --check .",
     "format": "prettier --write .",
     "lint:fix": "yarn run lint --fix",

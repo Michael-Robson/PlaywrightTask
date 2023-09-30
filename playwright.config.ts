@@ -1,5 +1,4 @@
-/* eslint-disable no-undef */
-import { defineConfig, devices } from '@playwright/test'
+import { devices, Config } from '@playwright/test'
 
 /**
  * Read environment variables from file.
@@ -10,7 +9,7 @@ import { defineConfig, devices } from '@playwright/test'
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
-export default defineConfig({
+const config: Config = {
   /* Where tests are found */
   testDir: './e2e/tests',
 
@@ -76,20 +75,6 @@ export default defineConfig({
       name: 'Mobile Chrome',
       use: { ...devices['Pixel 5'] },
     },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    // },
-
-    /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    // },
   ],
 
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
@@ -101,4 +86,6 @@ export default defineConfig({
   //   url: 'http://127.0.0.1:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
-})
+}
+
+export default config

@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES2021", // Use ES2021 or a lower version if preferred
+    "module": "CommonJS", // Use CommonJS module system
+    "outDir": "./dist", // Output directory for compiled files
+    "rootDir": "./", // Root directory of your TypeScript source code
+    "strict": true, // Enable strict type-checking
+    "esModuleInterop": true, // Enable ES module interop
+    "forceConsistentCasingInFileNames": true, // Enforce consistent casing of file names
+    "resolveJsonModule": true // Enable TypeScript to import JSON files,
+  },
+  "include": ["e2e/**/*.ts"], // Include TypeScript files in the 'e2e' directory
+  "exclude": ["node_modules"] // Exclude 'node_modules' directory from compilation
+}

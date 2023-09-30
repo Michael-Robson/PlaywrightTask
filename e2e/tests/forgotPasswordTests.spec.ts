@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test'
+import { expect, test, Page } from '@playwright/test'
 import { HomePage } from '../pages/homePage'
 import { ForgotPasswordPage } from '../pages/forgotPasswordPage'
 import { CommonSteps } from '../common-steps'
@@ -8,7 +8,11 @@ test.beforeEach(async ({}, testInfo) => {
   console.log(`Running ${testInfo.title}`)
 })
 
-test('Navigate to forgot password screen via homepage', async ({ page }) => {
+test('Navigate to forgot password screen via homepage', async ({
+  page,
+}: {
+  page: Page
+}) => {
   const homePage = new HomePage(page)
   const forgotPasswordPage = new ForgotPasswordPage(page)
   const commonSteps = new CommonSteps(page)
@@ -20,13 +24,17 @@ test('Navigate to forgot password screen via homepage', async ({ page }) => {
   await commonSteps.clickLinkByText('Forgot Password')
 
   // Assert we are on the correct URL
-  await commonSteps.assertPageURL(forgotPasswordPage.url)
+  await commonSteps.assertPageURL(forgotPasswordPage.getURL())
 })
 
-test('Assert forgot password screen looks correct', async ({ page }) => {
+test('Assert forgot password screen looks correct', async ({
+  page,
+}: {
+  page: Page
+}) => {
   const forgotPasswordPage = new ForgotPasswordPage(page)
 
-  // Go direct to the forgot password page
+  // Go directly to the forgot password page
   await forgotPasswordPage.visit()
 
   // Assert the header is present
@@ -60,13 +68,17 @@ test('Assert forgot password screen looks correct', async ({ page }) => {
   await forgotPasswordPage.assertSubmitButtonPresent()
 
   // Assert the submit button text is correct
-  await forgotPasswordPage.assertSubmitButtnTextCorrect()
+  await forgotPasswordPage.assertSubmitButtonnTextCorrect()
 })
 
-test('Submit a request and check the API returns a 500', async ({ page }) => {
+test('Submit a request and check the API returns a 500', async ({
+  page,
+}: {
+  page: Page
+}) => {
   const forgotPasswordPage = new ForgotPasswordPage(page)
 
-  // Go direct to the forgot password page
+  // Go directly to the forgot password page
   await forgotPasswordPage.visit()
 
   // Enter an email
@@ -75,7 +87,9 @@ test('Submit a request and check the API returns a 500', async ({ page }) => {
 
   // Start waiting the response https://playwright.dev/docs/api/class-page#page-wait-for-response
   // Note no await, I'm making the promise but not waiting for it here
-  const interceptResponse = page.waitForResponse(forgotPasswordPage.apiRequest)
+  const interceptResponse = page.waitForResponse(
+    forgotPasswordPage.getApiRequest()
+  )
 
   // Submit the form to trigger the API
   await forgotPasswordPage.clickSubmitButton()

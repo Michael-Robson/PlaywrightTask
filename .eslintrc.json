@@ -6,14 +6,17 @@
   "extends": [
     "eslint:recommended",
     "plugin:playwright/recommended", // This extends Playwright recommended rules
-    "prettier"
+    "prettier",
+    "plugin:@typescript-eslint/recommended" // Add TypeScript ESLint recommended rules
   ],
   "parserOptions": {
     "ecmaVersion": "latest",
-    "sourceType": "module"
+    "sourceType": "module",
+    "parser": "@typescript-eslint/parser" // Specify the TypeScript parser
   },
   "plugins": [
-    "playwright" // Include the Playwright ESLint plugin
+    "playwright", // Include the Playwright ESLint plugin
+    "@typescript-eslint" // Include the TypeScript ESLint plugin
   ],
   "rules": {
     // This allows me to use page.waitForTimeout - only doing it to check lints work

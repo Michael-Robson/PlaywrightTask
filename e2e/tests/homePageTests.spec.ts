@@ -1,15 +1,15 @@
-import { test } from '@playwright/test'
+import { test, Page } from '@playwright/test'
 import { HomePage } from '../pages/homePage'
 import { CommonSteps } from '../common-steps'
 
 // Log the test name and visit the home page
-test.beforeEach(async ({ page }, testInfo) => {
+test.beforeEach(async ({ page }: { page: Page }, testInfo) => {
   console.log(`Running ${testInfo.title}`)
   const homePage = new HomePage(page)
   await homePage.visit()
 })
 
-test('Assert the home page looks correct', async ({ page }) => {
+test('Assert the home page looks correct', async ({ page }: { page: Page }) => {
   const homePage = new HomePage(page)
 
   // Assert the page header is present
@@ -28,14 +28,18 @@ test('Assert the home page looks correct', async ({ page }) => {
   await homePage.assertNumberOfLinks(44)
 })
 
-test('Assert the example links are correct', async ({ page }) => {
+test('Assert the example links are correct', async ({
+  page,
+}: {
+  page: Page
+}) => {
   const homePage = new HomePage(page)
   await homePage.assertLinksAreCorrect()
 })
 
-test('Assert footer text on page', async ({ page }) => {
+test('Assert footer text on page', async ({ page }: { page: Page }) => {
   // Simple test using a function in common-steps.js to assert some text is on the page
-  // in a real like scenario you wouldn't do it like this
+  // in a real-life scenario, you wouldn't do it like this
   const commonSteps = new CommonSteps(page)
   await commonSteps.textOnPage('Powered by Elemental Selenium')
 })

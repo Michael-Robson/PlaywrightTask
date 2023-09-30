@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test'
+import { test, expect, Page } from '@playwright/test'
 import { HomePage } from '../pages/homePage'
 import { CommonSteps } from '../common-steps'
 
@@ -9,7 +9,7 @@ test.beforeEach(async ({ page }, testInfo) => {
   await homePage.visit()
 })
 
-test('Fails to show off report', async ({ page }) => {
+test('Fails to show off report', async ({ page }: { page: Page }) => {
   const homePage = new HomePage(page)
 
   // Assert the page header is present
@@ -19,11 +19,11 @@ test('Fails to show off report', async ({ page }) => {
   await expect(1, 'Custom failure message').toEqual(2)
 })
 
-test('Another purpose failure', async ({ page }) => {
+test('Another purpose failure', async ({ page }: { page: Page }) => {
   const commonSteps = new CommonSteps(page)
   await commonSteps.textOnPage("This isn't on the page so the test will fail")
 })
 
-test('Pass to show a mixture of test results from a single spec', async ({}) => {
+test('Pass to show a mixture of test results from a single spec', async () => {
   await expect(1).toEqual(1)
 })

@@ -1,10 +1,13 @@
+import { Page } from '@playwright/test'
 import { expect } from '@playwright/test'
 
 /**
  * A class of common functions we might want to use in our tests
  */
 class CommonSteps {
-  constructor(page) {
+  private page: Page
+
+  constructor(page: Page) {
     this.page = page
   }
 
@@ -15,7 +18,11 @@ class CommonSteps {
    * @param retryTimeout Milliseconds to wait between retries
    * @returns
    */
-  async textOnPage(expected, maxRetries = 5, retryTimeout = 500) {
+  async textOnPage(
+    expected: string,
+    maxRetries = 5,
+    retryTimeout = 500
+  ): Promise<void> {
     let retries = 0
     while (retries < maxRetries) {
       const element = await this.page.evaluate(() => document.body.textContent)
@@ -31,16 +38,16 @@ class CommonSteps {
   }
 
   /**
-   * Looks for a link with the passed in text value and clicks it
+   * Looks for a link with the passed-in text value and clicks it
    */
-  async clickLinkByText(linkText) {
+  async clickLinkByText(linkText: string): Promise<void> {
     await this.page.locator(`a:text-is("${linkText}")`).click()
   }
 
   /**
-   * Asserts the current page url matches the passed in value
+   * Asserts the current page URL matches the passed-in value
    */
-  async assertPageURL(expectedURL) {
+  async assertPageURL(expectedURL: string): Promise<void> {
     const current = this.page.url()
     expect(current).toContain(expectedURL)
   }

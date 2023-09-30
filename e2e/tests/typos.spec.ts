@@ -1,4 +1,4 @@
-import { test } from '@playwright/test'
+import { test, Page } from '@playwright/test'
 import { TyposPage } from '../pages/typosPage'
 
 // Log the test name
@@ -6,9 +6,13 @@ test.beforeEach(async ({}, testInfo) => {
   console.log(`Running ${testInfo.title}`)
 })
 
-// Flakey test the page intruced a typo randomly so we know it will fail sometimes
-// I could add retry to playwright.config.js to make it rerun upto x times but instead I've added another test to refresh the page
-test('Assert the typos page is correct - Flakey version', async ({ page }) => {
+// Flakey test the page introduced a typo randomly so we know it will fail sometimes
+// I could add retry to playwright.config.js to make it rerun up to x times but instead I've added another test to refresh the page
+test('Assert the typos page is correct - Flakey version', async ({
+  page,
+}: {
+  page: Page
+}) => {
   const typosPage = new TyposPage(page)
 
   // Go to the page
@@ -33,7 +37,11 @@ test('Assert the typos page is correct - Flakey version', async ({ page }) => {
   await typosPage.assertMessageTextIsCorrect()
 })
 
-test('Assert the typos page is correct - with a retry', async ({ page }) => {
+test('Assert the typos page is correct - with a retry', async ({
+  page,
+}: {
+  page: Page
+}) => {
   const typosPage = new TyposPage(page)
 
   // Go to the page
