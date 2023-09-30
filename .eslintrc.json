@@ -1,0 +1,25 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:playwright/recommended", // This extends Playwright recommended rules
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "playwright" // Include the Playwright ESLint plugin
+  ],
+  "rules": {
+    // This allows me to use page.waitForTimeout - only doing it to check lints work
+    "playwright/no-wait-for-timeout": "off",
+
+    // Turns off rule where spec file must have an assert, most of the asserts happen in page object
+    "playwright/expect-expect": "off"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "PlaywrightTest",
+  "version": "1.0.0",
+  "description": "A project to show off Playwright knowledge on LinkedIn",
+  "main": "index.js",
+  "repository": "https://github.com/Michael-Robson/PlaywrightTest",
+  "author": "Michael Robson",
+  "license": "MIT",
+  "private": true,
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "yarn lint:fix",
+    "*.{js,jsx,ts,tsx,scss,css,json,md}": "yarn format"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.37.1",
+    "eslint": "^8.48.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-playwright": "^0.16.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "prettier": "^3.0.3"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "lint": "eslint ./ --ext .js",
+    "prettier:check": "prettier --check .",
+    "format": "prettier --write .",
+    "lint:fix": "yarn run lint --fix",
+    "beforePR": "yarn lint:fix && yarn format",
+    "allTestsHeadless": "yarn playwright test",
+    "allTests": "yarn playwright test --headed"
+  }
+}
