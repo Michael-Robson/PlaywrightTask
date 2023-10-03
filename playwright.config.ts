@@ -21,6 +21,9 @@ const config: Config = {
      * For example in `await expect(locator).toHaveText();`
      */
     timeout: 2000,
+
+    // Allow 100 pixel difference between screenshot comparisons
+    toHaveScreenshot: { maxDiffPixels: 100 },
   },
 
   /* Run tests in files in parallel */
@@ -29,8 +32,8 @@ const config: Config = {
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
 
-  /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
+  /* Retries */
+  retries: process.env.CI ? 2 : 2,
 
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
@@ -46,7 +49,7 @@ const config: Config = {
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'https://the-internet.herokuapp.com/',
+    baseURL: 'https://cloud.cypress.io',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',

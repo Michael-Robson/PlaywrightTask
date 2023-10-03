@@ -1,10 +1,10 @@
 # PlaywrightTest
 
-Repository to renew and act as a portfolio of Playwright knowledge with examples running against the test app https://the-internet.herokuapp.com/
+Repository for the V7 QA Automation Engineer Challenge - adds some basic Playwright tests for https://cloud.cypress.io/login
 
 ### How The Project Works
 
-This project uses yarn to handle dependencies required and scripts needed to run the tests along with other useful scripts we might want to use for linting.
+This project uses yarn to handle dependencies and the scripts needed to run the tests along with other useful scripts we might want to use for linting, pre-commit hooks or generating screenshots used for the visual tests.
 
 Scripts and dependencies can be found in `package.json`
 
@@ -16,9 +16,9 @@ Tests are stored in `e2e\tests`
 
 A HTML test report is generated after each run in `e2e-test-report`
 
-Custom commands that don't relate to a page object are added to `e2e\common-steps.js`
+Custom commands that don't relate to a page object are added to `e2e\common-steps.ts`
 
-Global configuration is set in `playwright.config.js` this includes reporter configraution and the base URL
+Global configuration is set in `playwright.config.ts` this includes reporter configraution and the base URL
 
 The project is set to run each test agains three different browsers:
 
@@ -35,6 +35,7 @@ yarn lint:fix - Fixes any linting issues
 yarn beforePR - Runs both lint and format fix jobs
 yarn allTestsHeadless - Run the full test suite in headless mode
 yarn allTests - Runs the full test suite in headed mode (User will see browser appear on screen)
+yarn generateScreenshotForVisualTest - Saves new screenshots for the visual tests, these could then be pushed to the repo if the suite will run on that browser + OS combination often
 
 ### Dev Dependencies Used
 
@@ -43,6 +44,9 @@ yarn allTests - Runs the full test suite in headed mode (User will see browser a
 - [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier) - Turns off all rules that are unnecessary or might conflict with Prettier.
 - [eslint-plugin-playwright](https://github.com/playwright-community/eslint-plugin-playwright#readme) - Adds Playwright rules to eslint
 - [prettier](https://prettier.io/) - A code formatter
+- [typescript](https://github.com/Microsoft/TypeScript) - TypeScript is a language for application-scale JavaScript.
+- [typescript-eslint/parser](https://github.com/typescript-eslint/typescript-eslint) - Allows eslint to run against TypeScript files
+- [typescript-eslint/eslint-plugin](https://github.com/typescript-eslint/typescript-eslint) - Add TypeScript rules to eslint
 - [husky](https://typicode.github.io/husky/) - Improves commits by allowing you to run linting or tests before a push to a branch
 - [lint-staged](https://github.com/okonet/lint-staged) - Runs linting before a commit, works in conjunction with husky
 
@@ -50,7 +54,7 @@ yarn allTests - Runs the full test suite in headed mode (User will see browser a
 
 Linting is the process of performing static analysis on source code to flag patterns that might cause errors or other problems. As an application progresses through the various stages of development, code quality becomes critical.
 
-In this project we are linting with the Playwright recommended ruleset and also running Prettier to make sure all code is formated to the same standard.
+In this project we are linting with the Playwright recommended ruleset and TypeScript ruleset we are also running Prettier to make sure all code is formated to the same standard.
 
 Using husky and lint-staged I've created a pre-commit job in `.husky\pre-commit` which runs the lint-staged job found in `package.json`
 
@@ -61,9 +65,6 @@ Using husky and lint-staged I've created a pre-commit job in `.husky\pre-commit`
 
 This means whenever a git commit occures we are running the two lint tasks found in `package.json` that format all the code using eslint and then format all the code with prettier, if any issues can't be automatically fixed you will receive an error message and the commit won't be pushed.
 
-#### Notes and further reading
+### Proof Of Tests Passing
 
-- Useful for setting up eslint and prettier https://www.youtube.com/watch?v=St1YSNoB36Y&ab_channel=JustinBrooks
-- uses lint-staged & husky to do pre commit checks https://www.npmjs.com/package/lint-staged & https://www.npmjs.com/package/husky
-- in VS i have format on save turned on so prettier runs each time I save but this will mean on another persons computer it will run checks before a comit
-- Page object model example with Playwright https://playwright.dev/docs/pom
+![Passing Test Report](readme-images\testsPassing.png)

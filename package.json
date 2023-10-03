@@ -12,10 +12,10 @@
     "*.{js,jsx,ts,tsx,scss,css,json,md}": "yarn format"
   },
   "devDependencies": {
-    "@playwright/test": "^1.37.1",
+    "@playwright/test": "^1.38.1",
     "@typescript-eslint/eslint-plugin": "^6.7.3",
     "@typescript-eslint/parser": "^6.7.3",
-    "eslint": "^8.48.0",
+    "eslint": "^8.50.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-playwright": "^0.16.0",
     "husky": "^8.0.3",
@@ -31,6 +31,7 @@
     "lint:fix": "yarn run lint --fix",
     "beforePR": "yarn lint:fix && yarn format",
     "allTestsHeadless": "yarn playwright test",
-    "allTests": "yarn playwright test --headed"
+    "allTests": "yarn playwright test --headed",
+    "generateScreenshotForVisualTest": "yarn playwright test --update-snapshots"
   }
 }

@@ -18,11 +18,7 @@ class CommonSteps {
    * @param retryTimeout Milliseconds to wait between retries
    * @returns
    */
-  async textOnPage(
-    expected: string,
-    maxRetries = 5,
-    retryTimeout = 500
-  ): Promise<void> {
+  async textOnPage(expected: string, maxRetries = 5, retryTimeout = 500) {
     let retries = 0
     while (retries < maxRetries) {
       const element = await this.page.evaluate(() => document.body.textContent)
@@ -40,16 +36,25 @@ class CommonSteps {
   /**
    * Looks for a link with the passed-in text value and clicks it
    */
-  async clickLinkByText(linkText: string): Promise<void> {
+  async clickLinkByText(linkText: string) {
     await this.page.locator(`a:text-is("${linkText}")`).click()
   }
 
   /**
    * Asserts the current page URL matches the passed-in value
    */
-  async assertPageURL(expectedURL: string): Promise<void> {
+  async assertPageURL(expectedURL: string) {
     const current = this.page.url()
     expect(current).toContain(expectedURL)
+  }
+
+  /**
+   * Assert the page title is what we expect
+   * @param expected Expected page title
+   */
+  async assertPageTitle(expected: string) {
+    const pageTitle = await this.page.title()
+    expect(pageTitle).toBe(expected)
   }
 }
 

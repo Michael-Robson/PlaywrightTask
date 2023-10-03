@@ -1,0 +1,7 @@
+{
+  "invalid_accounts": [
+    { "email": "fake@me.com", "password": "Pa55w0rd" },
+    { "email": "madeup@gmail.com", "password": "Password123$" },
+    { "email": "notregistered@cypress.io", "password": "LetMeIn" }
+  ]
+}

@@ -4,9 +4,9 @@
     "es2021": true
   },
   "extends": [
-    "eslint:recommended",
+    "eslint:recommended", // Common eslint rules
     "plugin:playwright/recommended", // This extends Playwright recommended rules
-    "prettier",
+    "prettier", // Prettier rules
     "plugin:@typescript-eslint/recommended" // Add TypeScript ESLint recommended rules
   ],
   "parserOptions": {
@@ -19,10 +19,13 @@
     "@typescript-eslint" // Include the TypeScript ESLint plugin
   ],
   "rules": {
-    // This allows me to use page.waitForTimeout - only doing it to check lints work
+    // This allows me to use page.waitForTimeout - only doing it so you can confirm lints work by adding it to a test
     "playwright/no-wait-for-timeout": "off",
 
     // Turns off rule where spec file must have an assert, most of the asserts happen in page object
-    "playwright/expect-expect": "off"
+    "playwright/expect-expect": "off",
+
+    // Turn off the rules that doesn't allow conditional in tests
+    "playwright/no-conditional-in-test": "off"
   }
 }
