@@ -157,7 +157,7 @@ test('Visual Regression Tests', async ({ page }) => {
   await commonSteps.assertPageURL('/login')
 
   // Add visual comparison test so we can test if any visual regression occures between builds
-  //  await expect(page).toHaveScreenshot('LoginPage.png')
+  await expect(page).toHaveScreenshot('LoginPage.png')
 
   // Click sign up link
   await loginPage.clickSignUpLink()
@@ -166,7 +166,7 @@ test('Visual Regression Tests', async ({ page }) => {
   await commonSteps.assertPageURL('/signup')
 
   // Add visual comparison test so we can test if any visual regression occures between builds
-  // await expect(page).toHaveScreenshot('SignUpPage.png')
+  await expect(page).toHaveScreenshot('SignUpPage.png')
 })
 
 test('Assert the API message when invalid details are entered via email login', async ({
