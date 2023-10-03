@@ -27,5 +27,8 @@ jobs:
       - name: Prettier
         run: yarn prettier:check
 
+      - name: Install Playwright
+        run: yarn playwright install
+
       - name: Run tests
         run: yarn allTestsHeadless
