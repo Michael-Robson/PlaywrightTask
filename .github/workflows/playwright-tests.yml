@@ -45,4 +45,4 @@ jobs:
           path: e2e/e2e-test-report
 
       - name: workspace
-        run: .
+        run: echo "$(ls -R)"
