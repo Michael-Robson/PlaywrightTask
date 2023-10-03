@@ -35,11 +35,14 @@ jobs:
         continue-on-error: true
 
   upload-test-report:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Upload test report
-        uses: actions/upload-artifact@v2
-        with:
-          name: test-report
-          path: e2e/e2e-test-report
+          needs: test
+          runs-on: ubuntu-latest
+          steps:
+            - name: Upload test report
+              uses: actions/upload-artifact@v2
+              with:
+                name: test-report
+                path: e2e/e2e-test-report
+      
+            - name: List directory contents
+              run: ls -R e2e/e2e-test-report
