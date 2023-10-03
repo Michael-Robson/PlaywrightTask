@@ -44,5 +44,5 @@ jobs:
           name: test-report
           path: PlaywrightTask/e2e-test-report
 
-      - name: workspace
-        run: find ../ -print
+      - name: print folders
+        run: find PlaywrightTask -type f
