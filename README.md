@@ -1,4 +1,4 @@
-# PlaywrightTest
+# Playwright Task - Michael Robson
 
 Repository for the V7 QA Automation Engineer Challenge - adds some basic Playwright tests for https://cloud.cypress.io/login
 
@@ -20,7 +20,7 @@ Custom commands that don't relate to a page object are added to `e2e\common-step
 
 Global configuration is set in `playwright.config.ts` this includes reporter configraution and the base URL
 
-The project is set to run each test agains three different browsers:
+The project is set to run each test against three different browsers:
 
 - Chrome Desktop
 - Firefox Desktop
@@ -54,7 +54,7 @@ yarn generateScreenshotForVisualTest - Saves new screenshots for the visual test
 
 Linting is the process of performing static analysis on source code to flag patterns that might cause errors or other problems. As an application progresses through the various stages of development, code quality becomes critical.
 
-In this project we are linting with the Playwright recommended ruleset and TypeScript ruleset we are also running Prettier to make sure all code is formated to the same standard.
+In this project we are linting with the Playwright recommended ruleset and TypeScript ruleset we are also running Prettier to make sure all code is formatted to the same standard.
 
 Using husky and lint-staged I've created a pre-commit job in `.husky\pre-commit` which runs the lint-staged job found in `package.json`
 
@@ -63,8 +63,18 @@ Using husky and lint-staged I've created a pre-commit job in `.husky\pre-commit`
        "*.{js,jsx,ts,tsx,scss,css,json,md}": "yarn format"
       },
 
-This means whenever a git commit occures we are running the two lint tasks found in `package.json` that format all the code using eslint and then format all the code with prettier, if any issues can't be automatically fixed you will receive an error message and the commit won't be pushed.
+This means whenever a git commit occurs we are running the two lint tasks found in `package.json` that format all the code using eslint and then format all the code with prettier, if any issues can't be automatically fixed you will receive an error message and the commit won't be pushed.
 
 ### Proof Of Tests Passing
 
+Locally:
+
 ![Passing Test Report](readme-images\testsPassing.png)
+
+Pipeline: https://github.com/Michael-Robson/PlaywrightTask/actions/runs/6392235487
+
+![Passing Pipeline](readme-images\pipelinePassing.png)
+
+### NOTES
+
+The suite contains a visual test, visual tests in Playwright require an image to compare against. In this repo I have added images for my local setup and the Github pipeline, if you want to run the tests locally you will first need to run the `yarn generateScreenshotForVisualTest` script to generate screenshots based on your OS & browser combination. After this you can run `yarn allTests` and the tests will use your local screenshots for comparisons.
