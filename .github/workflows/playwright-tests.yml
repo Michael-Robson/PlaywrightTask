@@ -33,7 +33,11 @@ jobs:
       - name: Run tests
         run: yarn allTestsHeadless
 
-      - name: Upload Test Report
+  upload-test-report:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload test report
         uses: actions/upload-artifact@v2
         with:
           name: test-report
