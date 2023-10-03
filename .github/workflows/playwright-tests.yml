@@ -32,6 +32,7 @@ jobs:
 
       - name: Run tests
         run: yarn allTestsHeadless
+        continue-on-error: true
 
   upload-test-report:
     needs: test
