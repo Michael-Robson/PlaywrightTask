@@ -42,7 +42,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: test-report
-          path: e2e/e2e-test-report
+          path: PlaywrightTask/e2e-test-report
 
       - name: workspace
         run: find ../ -print
