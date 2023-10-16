@@ -69,11 +69,11 @@ This means whenever a git commit occurs we are running the two lint tasks found 
 
 Locally:
 
-![Passing Test Report](readme-images\testsPassing.png)
+![Passing Test Report](readme-images/testsPassing.png)
 
 Pipeline: https://github.com/Michael-Robson/PlaywrightTask/actions/runs/6392235487
 
-![Passing Pipeline](readme-images\pipelinePassing.png)
+![Passing Pipeline](readme-images/pipelinePassing.png)
 
 ### NOTES
 
